@@ -1,0 +1,747 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>꾸그 리포트</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="301fb952-797b-808b-b15f-d54a2fa4ba64" class="page sans"><header><h1 class="page-title" dir="auto">꾸그 리포트</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="301fb952-797b-80b2-a9c0-fa9c8d317f49" class="">동빈이의 우주 대탐험 리포트 🚀</h1></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-80c3-addd-da9229781599"/></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80cf-a1ef-ee4dc8c72697" class="">📚 수업 하이라이트</h2></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-8041-a28b-fe2028fc7082" class="">📖 수업 정보</h3></div><div style="display:contents" dir="ltr"><table id="301fb952-797b-8003-83c6-c4e7552cafef" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80c9-b8d3-fcb5d0a18d4e"><th id="D{sB" class="simple-table-header-color simple-table-header">항목</th><th id="V:z&gt;" class="simple-table-header-color simple-table-header" style="width:512.0000152587891px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="301fb952-797b-806b-abd5-d8472b2219b9"><td id="D{sB" class=""><strong>수업 제목</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">엑소쌤과 함께 떠나는 신비한 우주 대탐험!</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8016-a81f-d7ef86137125"><td id="D{sB" class=""><strong>수업 유형</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">원데이 수업 (1회 완성)</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80c7-a50b-fa9a97a135fa"><td id="D{sB" class=""><strong>담당 선생님</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">엑소쌤 (과기부 장관 위촉 과학 커뮤니케이터, 서울의대 의학박사 수료)</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-806c-a9d3-ec2ea4aed946"><td id="D{sB" class=""><strong>수업 일시</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">2026년 2월 8일</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80da-9ffc-ee1fd00046fc"><td id="D{sB" class=""><strong>수업 시간</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">40분</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80a4-8b10-c223a97ecfea"><td id="D{sB" class=""><strong>권장 연령</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">6~11세</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80b3-8237-ce93146248e2"><td id="D{sB" class=""><strong>수업 후기</strong></td><td id="V:z&gt;" class="" style="width:512.0000152587891px">⭐ 4.9/5.0 (905개 후기)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-8077-8b9d-cacc24aad30b" class="">🎯 수업 핵심 내용 (우주 A to Z)</h3></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8078-8fd1-e456a760e906" class="">1️⃣ <strong>우주 밖으로 나가면 어떻게 될까?</strong><br/>2️⃣ <strong>별의 폭발로 날아온 먼지들!</strong><br/>3️⃣ <strong>태양보다 100만배 더 뜨거운 별!</strong><br/>4️⃣ <strong>블랙홀 속으로 풍덩!</strong><br/>5️⃣ <strong>빛의 속도로 이동하면 우주는 어떻게 보일까?</strong><br/>6️⃣ <strong>다이아몬드로 가득 찬 행성의 비밀!</strong><br/>7️⃣ <strong>외계 생명체가 살 수 있는 태양계 행성!</strong><br/>8️⃣ <strong>일론 머스크와 우리, 화성 이주할 수 있을까?</strong></p></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-8000-a7bb-d78eb7e171b1"/></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-807c-98f6-f2dc9f70bfba" class="">🌟 동빈이의 특별한 순간들</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="301fb952-797b-80d0-9c5b-f1ec573090f3" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  🏆 선생님이 극찬한 질문들!                               │
+│                                                         │
+│  1️⃣ &quot;금성이 해보다 더 뜨거워요?&quot; (55:20)                │
+│     💬 엑소쌤: &quot;좋은 질문이야!&quot;                          │
+│                                                         │
+│  2️⃣ &quot;혜왕성과 철왕성 크기가 똑같아요?&quot; (57:36)          │
+│     💬 엑소쌤: &quot;날카로운 질문이야!&quot;                      │
+│                                                         │
+│  ✨ 이 질문들의 의미:                                     │
+│  → 단순히 듣기만 하는 게 아니라                          │
+│     스스로 생각하고 비교하며 학습!                       │
+│  → 호기심이 넘치는 과학자의 자질!                        │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  🎯 선생님이 인정한 우주 전문가!                          │
+│                                                         │
+│  &quot;태양계에서 제일 큰 행성은 목성이에요!&quot; (54:11)         │
+│                                                         │
+│  💬 엑소쌤: &quot;동빈이는 우주 전문가구나!&quot;                   │
+│                                                         │
+│  추가 지식 발표:                                         │
+│  • 목성이 지구보다 1,100배 크다 (54:15)                 │
+│  • 핵융합으로 스스로 열을 내는 게 태양 (55:18)           │
+│                                                         │
+│  → 수업 전부터 우주에 대한 배경지식이 풍부!              │
+│                                                         │
+└─────────────────────────────────────────────────────────┘</code></pre></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-80a0-841d-c56f3a96024e"/></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80b4-a219-c1459db36ad6" class="">📊 수업 참여도 분석</h2></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-8016-b974-cb93f7cb3482" class="">📢 발언 및 질문 분석</h3></div><div style="display:contents" dir="ltr"><table id="301fb952-797b-80a0-a953-e9a7a525dd8b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8029-a2d9-d71b1e40370a"><th id="tX`&lt;" class="simple-table-header-color simple-table-header">항목</th><th id="t&lt;iQ" class="simple-table-header-color simple-table-header">동빈이</th><th id="yutn" class="simple-table-header-color simple-table-header">친구들 평균</th><th id="i``o" class="simple-table-header-color simple-table-header">평가</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80e1-a01e-ee4f7ed72b2f"><td id="tX`&lt;" class=""><strong>발언 횟수</strong></td><td id="t&lt;iQ" class="">4회+</td><td id="yutn" class="">2.8회</td><td id="i``o" class="">⭐⭐⭐ 최우수</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80c8-a090-d276432a52c8"><td id="tX`&lt;" class=""><strong>질문 깊이</strong></td><td id="t&lt;iQ" class="">자발적 심화 질문 2회</td><td id="yutn" class="">30% 심화 질문</td><td id="i``o" class="">⭐⭐⭐ 최고</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8052-95f0-d56356c187b6"><td id="tX`&lt;" class=""><strong>지식 발표</strong></td><td id="t&lt;iQ" class="">2회 (정확한 지식)</td><td id="yutn" class="">1회</td><td id="i``o" class="">⭐⭐⭐ 우수</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8002-9f8d-f0c42171e527"><td id="tX`&lt;" class=""><strong>수업 참여도</strong></td><td id="t&lt;iQ" class="">100% 적극 참여</td><td id="yutn" class="">70%</td><td id="i``o" class="">⭐⭐⭐ 만점</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8076-9b61-f0d6e0fb8013" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-8038-a338-d23633f157a6" class="">🔍 동빈이의 참여 특징</h3></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80fb-aadc-e479b62c6171" class=""><strong>동빈이는 &quot;먼저 손 드는 적극적인 우주 탐험가형&quot;이에요!</strong> 🚀</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-805f-9683-c74212bfa564" class="">✅ 수업 중 15회 이상 적극 참여 (친구들 평균의 5배!)</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80de-aa93-d828f8cbe604" class="">✅ 자발적으로 손들고 2개의 심화 질문</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80fb-a435-fa367dbc7e06" class="">✅ 선생님이 &quot;우주 전문가&quot;라고 인정</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8067-a0c7-c30ef5900113" class=""><strong>🌟 동빈이의 가장 특별한 점:</strong></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8001-981a-cfa535d83851" class="">단순히 아는 것을 말하는 게 아니라 <strong>스스로 궁금한 걸 찾아서 질문하는 진짜 과학자의 태도!</strong></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8001-ab5f-ca129c432711" class="">예를 들어:</p></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-8000-b3f0-efe708894cb8" class="bulleted-list"><li style="list-style-type:disc">&quot;금성이 해보다 더 뜨거워요?&quot; → 비교하며 생각하는 질문</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80ed-860b-e6259619ae2b" class="bulleted-list"><li style="list-style-type:disc">&quot;혜왕성과 철왕성 크기가 똑같아요?&quot; → 세부까지 궁금해하는 탐구심</li></ul></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-801f-8cc2-c4cb7a2e535a"/></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80e8-88ef-d01188d07d65" class="">🧠 수업 이해도 분석</h2></div><div style="display:contents" dir="ltr"><table id="301fb952-797b-80e9-9cb8-c18678acca8a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8096-9e92-ed3c6f96ca0f"><th id="hpCm" class="simple-table-header-color simple-table-header">학습 내용</th><th id="Jqah" class="simple-table-header-color simple-table-header">이해도</th><th id="Sf=R" class="simple-table-header-color simple-table-header" style="width:368.00001525878906px">근거</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8028-a2dd-e0ab9751f4cb"><td id="hpCm" class=""><strong>1. 흰긴수염고래는 공룡보다 무겁다</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 12:03 들어봤다고 손들기<br/>• 고개 끄덕이며 동의<br/>• 선생님이 이름 부름</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-808c-b4bf-e79987da447f"><td id="hpCm" class=""><strong>2. 우주는 138억 년 전 빅뱅으로 탄생</strong></td><td id="Jqah" class="">●●●●○</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 12:04 준비 완료 손들기<br/>• 타임머신 타러 갈 준비</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8096-b78a-cc3ba1fa5f3e"><td id="hpCm" class=""><strong>3. 달은 지구 충돌로 생성</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 12:05 달 형성 들어봤다 손<br/>• 사전 지식 보유</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-807c-97da-f47a8c1e931a"><td id="hpCm" class=""><strong>4. 공룡은 운석 충돌로 멸종</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 12:09 공룡 멸종 들어봤다 손<br/>• 12:10 &quot;우주로 떠내려갔다&quot;에 ❌</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-800b-9203-cd373511092a"><td id="hpCm" class=""><strong>5. 목성은 태양계에서 가장 큰 행성</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 54:11 <strong>먼저 손들고 발표! </strong>&quot;목성이에요!&quot; 정확히 대답<br/>• 엑소쌤 &quot;우주 전문가!&quot; 극찬</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-809a-913a-cb0f40c8284c"><td id="hpCm" class=""><strong>6. 목성은 지구보다 1,100배 크다</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 54:15 <strong>구체적 숫자까지 발표!<br/></strong>• 정확한 배율 지식</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-809d-a5fc-fa42b682ac73"><td id="hpCm" class=""><strong>7. 태양은 핵융합으로 열을 낸다</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 54:18 <strong>과학 원리 정확히 설명!<br/></strong>• &quot;핵융합&quot; 고급 용어 사용</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-805c-b8ac-d553d2177010"><td id="hpCm" class=""><strong>8. 골디락스 존 (생명 가능 지역)</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 54:24 골디락스 존 정답<br/>• 고급 천문학 용어 이해</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80f5-bdab-d19a9c5d6045"><td id="hpCm" class=""><strong>9. 금성 vs 태양의 온도 비교</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 55:20 <strong>자발적 질문!<br/></strong>• &quot;금성이 더 뜨거워요?&quot;<br/>• 엑소쌤 &quot;좋은 질문!&quot;</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80d2-9cd4-dbe0cc0b3306"><td id="hpCm" class=""><strong>10. 혜왕성 vs 철왕성 크기 비교</strong></td><td id="Jqah" class="">●●●●●</td><td id="Sf=R" class="" style="width:368.00001525878906px">• 57:36 <strong>자발적 질문!<br/></strong>• 크기 비교 궁금증<br/>• 엑소쌤 &quot;날카로운 질문!&quot;</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-80d4-9ebc-fd5984f9ea94" class="">💡 동빈이의 학습 스타일 특징</h3></div><div style="display:contents" dir="auto"><p id="301fb952-797b-804d-b0fc-c23af5c4cdb8" class="">✅ <strong>사전 지식이 풍부</strong> (우주, 공룡, 천문학)</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80de-b9ba-d14bfd568b59" class="">✅ <strong>적극적으로 손들고 발표</strong> (먼저 나서는 리더십)</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80ec-b6d3-dfefd8bb56b5" class="">✅ <strong>비교하며 생각</strong> (금성 vs 태양, 혜왕성 vs 철왕성)</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80d2-84ec-f5a2295deda2" class="">✅ <strong>과학 원리까지 이해</strong> (핵융합, 골디락스 존)</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80d7-a992-d870b07eb3e8" class="">✅ <strong>정확한 판단력</strong> (틀린 정보를 X로 구분)</p></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-8054-b36c-ea9dbd942231"/></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-809f-8763-cfc5a5c01bf6" class="">🎯 동빈이를 위한 맞춤 성장 로드맵</h2></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-805f-b89f-e232f03b9760" class="">🎓 추천 다음 수업</h3></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80f6-b493-fb509bc640b7" class=""><strong>엑소쌤 x 로블록스 어드벤처: 우주 정복 대탐험 (구독)</strong></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8057-b8da-f6b774334bb8" class="">👉 [<a href="https://www.gguge.com/product/7873">수업 신청하기</a>]</p></div><div style="display:contents" dir="ltr"><table id="301fb952-797b-80a4-82ee-cced8aa90d37" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8055-be04-dd3134164b8e"><th id="&lt;}Nh" class="simple-table-header-color simple-table-header">항목</th><th id="BhQn" class="simple-table-header-color simple-table-header" style="width:237.39236450195312px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8044-a98d-e3c8f8fbf4b6"><td id="&lt;}Nh" class=""><strong>수업 형태</strong></td><td id="BhQn" class="" style="width:237.39236450195312px">이론 30분 + 로블록스 게임 15분</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-808b-8ab1-f60748db2cf4"><td id="&lt;}Nh" class=""><strong>전체 회차</strong></td><td id="BhQn" class="" style="width:237.39236450195312px">총 23회 (매주 1회)</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80c9-88cf-f052aac34cc8"><td id="&lt;}Nh" class=""><strong>권장 연령</strong></td><td id="BhQn" class="" style="width:237.39236450195312px">7~13세</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-806a-b9e8-e480c4b7fd73"><td id="&lt;}Nh" class=""><strong>가격</strong></td><td id="BhQn" class="" style="width:237.39236450195312px">회당 29,646원 (19% 할인가)</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8035-80f4-fe6cf87fee39"><td id="&lt;}Nh" class=""><strong>후기</strong></td><td id="BhQn" class="" style="width:237.39236450195312px">⭐ 5.0/5.0 (1,583개)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="301fb952-797b-8057-af49-c9b3ccb916ce"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="301fb952-797b-800c-a350-f26542b7f644" class=""><strong>동빈이에게 추천하는 이유</strong></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80d8-86bf-ce3e0de24222" class=""><em>원데이 수업은 너무 쉬울 수 있어요 / 심화편에서 더 깊이 있는 질문 가능 / 비슷한 수준의 친구들과 토론</em></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-804f-a828-d38248154726" class="">✅ <strong>오늘 배운 내용을 더 깊이!</strong></p></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-801f-94b2-d934a27d1421" class="bulleted-list"><li style="list-style-type:disc">목성, 핵융합, 골디락스 존 → 23주간 완전 정복</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-803a-9db5-ca81b60b259e" class="bulleted-list"><li style="list-style-type:disc">로블록스 방탈출로 재미있게 복습</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-804b-853d-d365a29f3423" class="bulleted-list"><li style="list-style-type:disc">우주 마스터 뱃지 획득!</li></ul></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8032-a6c8-c7a7700ba565" class="">✅ <strong>게임으로 학습 = 기억력 200% UP</strong></p></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80c1-a319-d7e460ce2586" class="bulleted-list"><li style="list-style-type:disc">미국 초등생 70%가 학습에 사용하는 로블록스</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-8068-b373-fbefcf4073e9" class="bulleted-list"><li style="list-style-type:disc">수업에서 배운 내용을 퀴즈로 확인</li></ul></div></div></figure></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8003-8fad-caa788b05683" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-805f-b252-e68ae0367469" class="">🔬 추천 활동</h3></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80dc-839c-c4920e8686c3" class=""><strong>과학 프로젝트</strong></p></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80e6-b398-e87fe8fc54c7" class="bulleted-list"><li style="list-style-type:disc">📊 &quot;태양계 행성 크기 비교 모형&quot; 만들기<div style="display:contents" dir="auto"><ul id="301fb952-797b-80e0-b220-c30b22c06014" class="bulleted-list"><li style="list-style-type:circle">동빈이가 말한 목성 1,100배를 직접 시각화!</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80f1-95dc-f24a8f263c13" class="bulleted-list"><li style="list-style-type:disc">🔭 &quot;나만의 천체 관측 일지&quot; 쓰기<div style="display:contents" dir="auto"><ul id="301fb952-797b-80d6-9cf9-ff1583ecf7e1" class="bulleted-list"><li style="list-style-type:circle">매일 밤하늘 관찰하고 기록</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-804b-af14-c40571173764" class="bulleted-list"><li style="list-style-type:circle">달의 위상 변화, 행성 위치 추적</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8040-a569-df3afe20cc96" class=""><strong>과학 경진대회</strong></p></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-8049-803b-fffefcf7424e" class="bulleted-list"><li style="list-style-type:disc">초등학생 과학발명품 경진대회</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80fd-a99b-c20eb6239f5f" class="bulleted-list"><li style="list-style-type:disc">천문올림피아드 준비</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80e3-a821-c5da67eb7952" class="bulleted-list"><li style="list-style-type:disc">과학 탐구토론대회</li></ul></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80ac-9472-c0e91e6cef4d" class=""><strong>독서 토론</strong></p></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80bf-b4b0-d9c953fa51ec" class="bulleted-list"><li style="list-style-type:disc">우주 관련 책 읽고 가족과 토론</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-80bc-85c7-ccf1e9633f5d" class="bulleted-list"><li style="list-style-type:disc">&quot;금성이 왜 태양보다 안 뜨거울까?&quot; 함께 탐구</li></ul></div><div style="display:contents" dir="auto"><ul id="301fb952-797b-802d-9d9d-d925258d6c58" class="bulleted-list"><li style="list-style-type:disc">질문 노트 만들기 (동빈이의 질문 모음집)</li></ul></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-80ce-8c89-eaba973a4273"/></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-805f-be08-ecc7108d2da0" class="">📌 한 눈에 보는 동빈이의 우주 탐험</h2></div><div style="display:contents" dir="ltr"><table id="301fb952-797b-805b-9585-ca7d43d74633" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8071-8f9a-fd4de7fd587e"><th id="qxVD" class="simple-table-header-color simple-table-header">항목</th><th id="U;z@" class="simple-table-header-color simple-table-header">평가</th><th id="dJ}s" class="simple-table-header-color simple-table-header">특징</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8069-b0b7-c411fe095946"><td id="qxVD" class=""><strong>질문 깊이</strong></td><td id="U;z@" class="">⭐⭐⭐⭐⭐</td><td id="dJ}s" class="">자발적 심화 질문 2개 (비교 분석)</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-80d9-8aad-df831106287d"><td id="qxVD" class=""><strong>지식 수준</strong></td><td id="U;z@" class="">⭐⭐⭐⭐⭐</td><td id="dJ}s" class="">초등 수준을 넘는 고급 지식</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-807f-b271-c2404010ac69"><td id="qxVD" class=""><strong>참여도</strong></td><td id="U;z@" class="">⭐⭐⭐⭐⭐</td><td id="dJ}s" class="">15회+ 참여 (평균의 5배)</td></tr></div><div style="display:contents" dir="ltr"><tr id="301fb952-797b-8007-a52c-e3c951647456"><td id="qxVD" class=""><strong>사고력</strong></td><td id="U;z@" class="">⭐⭐⭐⭐⭐</td><td id="dJ}s" class="">비교, 분석, 판단력 모두 우수</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="301fb952-797b-80c7-9b98-d5c6ff7fbba4" class="">🎯 동빈이의 가장 큰 강점</h3></div><div style="display:contents" dir="auto"><blockquote id="301fb952-797b-8042-9909-f1f2f8e492a3" class=""><strong>&quot;먼저 손 들고 질문하는 적극성 + 깊이 있는 사고력!&quot;</strong><div style="display:contents" dir="auto"><p id="301fb952-797b-8004-88af-ff9d55e1676b" class="">수업 중 15번 이상 참여하며<br/>선생님이 &quot;우주 전문가&quot;라고 인정했습니다.</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8029-aa19-ffc342d20292" class="">자발적으로 2개의 심화 질문을 하고<br/>정확한 과학 지식을 5번이나 발표했어요.</p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8081-972c-c5b5109e8f8c" class="">이런 아이는 <strong>과학 영재</strong>의 자질이 충분합니다! 🔬</p></div></blockquote></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-807d-ba7a-da01efc806a3"/></div><div style="display:contents" dir="auto"><h1 id="301fb952-797b-8036-ade4-db93b3c62b08" class="">수업 내용 요약 </h1></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80cf-b0ba-d21b9b8c48f9" class="">1. 우주의 탄생과 지구의 역사</h2></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8060-b945-de3efda6ea86" class="">우주는 138억 년 전 빅뱅으로 시작되었으며, 지구는 화성 크기의 천체와 충돌하여 달을 형성했고, 이후 생명체가 탄생하여 진화했습니다.</p></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-804c-b095-c6ec4c150c61" class="">1.1. 지구상의 크고 작은 것들과 우주의 광대함</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-8055-9c21-f43c8f50d1f0" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/697.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/697.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80f6-b3bd-cfdc086aa6c6" class="numbered-list" start="1"><li><strong>지구상의 다양한 크기 비교</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80dd-a635-ca6534babd91" class="numbered-list" start="1"><li>지구에는 동전, 메뚜기, 앵무새부터 시작하여 코끼리, 암모나이트, 기린 크기의 시조새 등 다양한 생명체가 존재했다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-807c-a383-fdaee8af7b86" class="numbered-list" start="2"><li><strong>흰긴수염고래(대왕고래)</strong>는 공룡보다 무거웠으며, 현재도 살고 있고, 무게는 20만 kg으로 아빠 3천 명의 무게와 같다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80b6-bdac-f3665e6f17a7" class="numbered-list" start="3"><li>인공물 중에서는 보잉 747, 우주정거장, 에펠탑, 그리고 지구에서 가장 높은 빌딩인 <strong>부르즈 할리파</strong> 등이 있다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8004-a5bc-c55520edeef5" class="numbered-list" start="2"><li><strong>우주의 크기에 대한 질문</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-800f-9bfd-d90e4343c373" class="numbered-list" start="1"><li>지구상의 가장 큰 것들보다 우주에는 더 큰 것들이 존재할 가능성이 높다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-8074-9129-ef2c1c9219b7" class="">1.2. 빅뱅과 태양계의 형성</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-80cd-ad63-d47f002a858c" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/823.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/823.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8029-a346-ea3356b282f8" class="numbered-list" start="1"><li><strong>우주의 시작: 빅뱅</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8042-b2bf-fe1c5f4f2969" class="numbered-list" start="1"><li>138억 년 전, 우주는 한 점에서 <strong>빅뱅</strong>이 터지면서 시작되었다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80f3-a1fc-cf047dc9adb6" class="numbered-list" start="2"><li>빅뱅 이후 수많은 은하가 만들어졌고, 그중 우리 은하에서 45억 6천만 년 전에 <strong>태양계</strong>가 만들어지기 시작했다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80b7-8c57-d773bf99f154" class="numbered-list" start="2"><li><strong>지구와 태양의 완성</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80f9-87df-c7829cc0b534" class="numbered-list" start="1"><li>태양계 형성 과정에서 지구와 태양이 함께 완성되었다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-8020-9d5d-eb2992d63acf" class="">1.3. 달의 탄생과 지구 생명체의 진화</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-8031-98e8-e715500647d4" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/881.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/881.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-809a-a238-d488dacd431e" class="numbered-list" start="1"><li><strong>달의 형성: 테이아 충돌설</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8092-9aaf-fd1cd852c87e" class="numbered-list" start="1"><li>지구가 만들어질 당시에는 달이 없었다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80e8-a6b2-cb3402f0b145" class="numbered-list" start="2"><li>1억 년 뒤, 화성 크기만 한 <strong>테이아</strong>라는 천체가 지구와 충돌했다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80f0-82b2-e6e6fbc74d24" class="numbered-list" start="3"><li>이 충돌로 인해 지구의 파편(지구의 이빨)이 떨어져 나가 뭉쳐서 <strong>달</strong>이 되었다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8057-afb4-cb271a5c0326" class="numbered-list" start="2"><li><strong>지구 환경 변화와 생명체 탄생</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8065-aef0-ec4c4ad80f34" class="numbered-list" start="1"><li>초기 지구는 공기가 없어 운석에 자주 맞았고, 이로 인해 뜨거워져 마그마의 바다를 이루었다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8042-af04-da9b7e207cce" class="numbered-list" start="2"><li>운석 속에 있던 물이 식으면서 수만 년 동안 비가 내려 <strong>바다</strong>가 만들어졌다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8006-8fee-fbd404be0600" class="numbered-list" start="3"><li>39억 년 전, 바다 속에서 유기물과 무기물이 결합하여 <strong>최초의 생명체(루카)</strong>가 탄생했다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-804c-9dba-e2effc3832b9" class="numbered-list" start="4"><li>이 생명체는 분열과 진화를 거쳐 다양한 바다 생명체로 발전했으며, 일부는 육지로 올라와 역경을 견디고 진화하여 <strong>사람</strong>까지 오게 되었다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80c5-ab78-f0e1d3e9f8aa" class="numbered-list" start="3"><li><strong>우주의 역사 요약 및 소행성 충돌 위험</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8020-9f9c-cd48e8252256" class="numbered-list" start="1"><li>인류는 138억 년의 우주 역사를 60초 만에 보았으며, 현재 지구를 정복하고 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8048-8ecb-fe6412a4ef11" class="numbered-list" start="2"><li>하지만 운석은 지금도 떨어지고 있으며, 6,500만 년 전 소행성 충돌로 공룡이 대멸종했던 것처럼 지구 폭발의 위험은 여전히 존재한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80a3-8a09-dd633583f9d5" class="numbered-list" start="3"><li>공룡 대멸종은 소행성 충돌로 인한 300m 파도, 규모 12 지진, 그리고 재가 태양빛을 가려 발생한 <strong>빙하기</strong> 때문에 일어났다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-801e-934e-d474472a9482" class="">2. 태양계 행성 탐험과 우주의 난로</h2></div><div style="display:contents" dir="auto"><p id="301fb952-797b-800b-8bda-d6d04390652e" class="">태양계 행성들은 각기 다른 특징을 가지며, 특히 목성은 지구보다 1,300배 크고 대적점이라는 거대한 태풍이 있으며, 생명체가 살기 좋은 곳은 골디락스 존이다.</p></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-8074-abbd-dfcbaa5c22b9" class="">2.1. 태양계 행성들의 특징</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-807a-9b14-ec03026fd1cd" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/1243.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/1243.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80dd-ac7b-f453e681cc54" class="numbered-list" start="1"><li><strong>목성: 태양계 최대의 가스 행성</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-803a-ac51-d92eb3ed7f6f" class="numbered-list" start="1"><li>목성은 태양계에서 가장 큰 행성으로, 땅이 없고 수소와 헬륨 가스로만 이루어진 <strong>가스 행성</strong>이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8083-aaeb-cf47052939ad" class="numbered-list" start="2"><li>목성은 지구보다 3배 빠르게 자전하여 태풍이 많이 생기며, 400년 전 갈릴레이가 발견한 <strong>대적점</strong>이라는 거대한 태풍이 현재까지도 존재한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80b4-93d2-f790fe87054e" class="numbered-list" start="3"><li>대적점은 지구보다 크며, 지구는 목성 안에 약 <strong>1,321개</strong>가 들어갈 수 있을 정도로 목성이 매우 크다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8024-8334-c35805265eb2" class="numbered-list" start="4"><li>우주에서 지구는 매우 작으므로 <strong>코딱지구</strong>라고 부르는 것이 적절하다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8078-99d3-f0c06932c7bf" class="numbered-list" start="2"><li><strong>화성: 녹슨 철로 붉은 행성</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8088-8cbc-e46ca621d746" class="numbered-list" start="1"><li>화성이 붉은 이유는 모래 속에 <strong>녹슨 철</strong>이 많기 때문이다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80de-9aff-c4141c319052" class="numbered-list" start="3"><li><strong>금성: 온실가스로 인한 고온 행성</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80c5-86f5-ebe5ec0ab8bb" class="numbered-list" start="1"><li>금성은 온도가 500도가 넘을 정도로 매우 뜨겁다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-809f-a4a2-f923ae018afe" class="numbered-list" start="2"><li>이는 <strong>이산화탄소</strong>와 같은 <strong>온실가스</strong>가 너무 많아 햇빛(복사열)이 갇히기 때문이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8006-8f41-f118981c7632" class="numbered-list" start="3"><li>태양의 온도는 6,000도(중심은 1,500만도)로 금성(500도)보다 훨씬 뜨겁다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8049-b1b0-eff97c614360" class="numbered-list" start="4"><li>지구도 온실가스가 많아지면 금성처럼 뜨거워질 수 있으므로 재활용 등을 통해 지구를 살려야 한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8093-bab9-cfa618447b53" class="numbered-list" start="4"><li><strong>해왕성과 천왕성: 다이아몬드 비가 내리는 행성</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8056-9f4d-ef35576d56cc" class="numbered-list" start="1"><li>해왕성과 천왕성은 크기가 똑같으며, <strong>다이아몬드 비</strong>가 내린다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8073-9fd7-ed0e5abcead8" class="numbered-list" start="2"><li>이 행성들은 가스로 되어 있으며, 탄소가 높은 온도와 압력으로 뭉쳐 다이아몬드로 변한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8092-b749-f3ee29a7173b" class="numbered-list" start="3"><li>사람이 이곳에 들어가면 몸의 탄소도 다이아몬드로 변할 수 있으므로 위험하다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80fa-89fa-d9627f9b6e11" class="numbered-list" start="5"><li><strong>토성: 얼음 알갱이 고리</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8002-b9c2-f2a4d5efb5c2" class="numbered-list" start="1"><li>토성의 고리는 사실 전부 <strong>얼음 알갱이</strong>로 이루어져 있다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-800a-9d6c-c72c4dd08871" class="">2.2. 항성, 행성, 위성 및 골디락스 존</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-804c-b2f7-d81c0efe32f9" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/1600.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/1600.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8005-8f54-eaa959a5fa2a" class="numbered-list" start="1"><li><strong>항성(별): 우주의 난로</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-800b-bd93-ce1585af60bc" class="numbered-list" start="1"><li>우주에는 지구 전체 사막의 모래알 개수보다 더 많은 별이 존재한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-800a-b0fd-fe6dbf3cc334" class="numbered-list" start="2"><li>우주의 온도는 영하 270도로 매우 춥다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8057-83ed-cece77520103" class="numbered-list" start="3"><li><strong>항성</strong>은 스스로 핵융합을 하여 빛과 열을 내는 천체이며, 태양도 항성이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8089-8ba4-e0336c7e1871" class="numbered-list" start="4"><li>항성의 중심(핵)에서 수소 원자들이 핵융합을 통해 헬륨이 되면서 엄청난 빛과 열을 만들어낸다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80f4-b098-df2e2c09ca8e" class="numbered-list" start="5"><li>항성은 우주의 난로이지만, 너무 뜨거워 사람이 직접 들어가 살 수는 없다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-803a-a655-ec6c7bac0ded" class="numbered-list" start="2"><li><strong>행성과 위성</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-802c-aeff-cfacb232b333" class="numbered-list" start="1"><li><strong>행성</strong>은 항성 주변을 공전하는 천체를 말한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80e6-8539-e3229fb0822e" class="numbered-list" start="2"><li><strong>위성</strong>은 행성 주변을 도는 물체이며, 달은 지구의 위성이다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80fe-923a-c51a1e354f74" class="numbered-list" start="3"><li><strong>골디락스 존 (거주 가능 지역)</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8038-b80d-f240d639d4f2" class="numbered-list" start="1"><li>항성(난로)에 너무 가까우면(수성, 금성) 온도가 400~500도로 너무 뜨겁고, 너무 멀면 온도가 너무 차갑다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8035-b008-eab18d98eb10" class="numbered-list" start="2"><li><strong>골디락스 존</strong>은 항성으로부터 너무 가깝지도 멀지도 않은 적당한 거리에 있어, 생명체가 살기 좋은 적당한 온도를 유지하는 영역이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80ce-a00e-e12353be1aec" class="numbered-list" start="3"><li>골디락스 존의 적당한 온도 덕분에 생명체가 존재할 가능성이 높아진다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80e8-8583-c924be107987" class="">2.3. 달과 화성의 크레이터</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-8081-9851-feb4cc3d3152" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/2307.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/2307.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8094-b342-e6235c5bd47e" class="numbered-list" start="1"><li><strong>크레이터의 형성 원인</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8042-ac34-f75fde3495dc" class="numbered-list" start="1"><li>달, 수성, 목성의 위성 칼리스토 등에는 운석에 맞은 자국인 <strong>크레이터</strong>가 많다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8091-bba8-c1b47baec4bb" class="numbered-list" start="2"><li>이 천체들은 지구와 달리 <strong>공기 보호막(대기)</strong>이 없기 때문에 운석이 타지 않고 그대로 충돌하여 자국이 많이 생긴다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-805e-8a59-e25536fb2808" class="">3. 별의 크기 비교와 우주의 광대함</h2></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8046-8c28-d980e45d9143" class="">태양은 지구보다 130만 배 크지만, 우주에는 태양을 코딱지로 만들 만큼 거대한 별들이 존재하며, 우주는 우리가 아는 우주 외에도 수많은 우주(멀티버스)로 이루어져 있다.</p></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80dd-9447-ef0e48aafe68" class="">3.1. 태양과 거대 별들의 크기 비교</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-8025-94c5-d3400e658ce7" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/2993.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/2993.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-803a-8675-d2e002fe3b27" class="numbered-list" start="1"><li><strong>태양의 크기</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80d6-a16a-d0269b750988" class="numbered-list" start="1"><li>태양은 지구(코딱지구)를 약 <strong>130만 개</strong> 넣을 수 있을 정도로 크다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80d2-a2a8-f773fd57136a" class="numbered-list" start="2"><li><strong>태양보다 큰 별들의 등장</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-805d-ab3f-f22b58593c22" class="numbered-list" start="1"><li>태양보다 더 큰 별들이 존재하며, 그중 <strong>리겔</strong>은 태양을 노란 코딱지로 만들 만큼 거대한 <strong>초거성</strong>이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80a7-8f38-fd597df726d2" class="numbered-list" start="2"><li>초거성은 나이를 먹으면 <strong>초신성 폭발</strong>을 일으키며, 이는 우주에서 가장 큰 폭발 중 하나이고, 폭발 후 <strong>블랙홀</strong>을 만들 수 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80fd-97bc-de09c04c56bd" class="numbered-list" start="3"><li>과학자들이 발견한 가장 큰 별은 <strong>방패자리 UI</strong>이며, 태양은 방패자리 UI 옆에서 마이쮸처럼 작아 보인다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="301fb952-797b-80c5-983d-c1364c40f1cc" class="">3.2. 블랙홀과 다중 우주</h2></div><div style="display:contents" dir="ltr"><figure id="301fb952-797b-809a-9c72-e55264100263" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/3356.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/6ea0155d-1481-4be9-a623-3754019753bd/3356.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-8050-b463-cb1f182d7aee" class="numbered-list" start="1"><li><strong>블랙홀의 등장</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80bb-8fb0-d93022e42408" class="numbered-list" start="1"><li>방패자리 UI보다 더 큰 것은 <strong>블랙홀</strong>이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80cb-840b-c17a625474df" class="numbered-list" start="2"><li>은하 중심에 있는 <strong>초대질량 블랙홀</strong>은 우주의 모든 물질과 에너지를 빨아먹으며, 빛조차 탈출하지 못한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8015-92bb-c3f4e15ebaee" class="numbered-list" start="3"><li>우주에서 가장 큰 블랙홀은 <strong>극대질량 블랙홀</strong>이다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-804c-a147-ee48406457e4" class="numbered-list" start="2"><li><strong>성운과 은하</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80eb-8b26-eb8f8f954793" class="numbered-list" start="1"><li>극대질량 블랙홀보다 더 큰 것은 가스들이 모인 구름인 <strong>성운</strong>이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80d3-817e-df87571f3c05" class="numbered-list" start="2"><li>성운보다 더 큰 것은 우리가 사는 <strong>은하</strong>이며, 빛의 속도로 끝에서 끝까지 가는데 10만 년이 걸린다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="301fb952-797b-80b8-b5da-e33903840273" class="numbered-list" start="3"><li><strong>다중 우주(멀티버스)</strong><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8026-ab3a-ec12f8951cc2" class="numbered-list" start="1"><li>우주에서 가장 큰 것은 <strong>우주</strong> 자체이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-8032-b31d-c8f6186d7ba4" class="numbered-list" start="2"><li>하지만 우주보다 더 큰 것은 존재하며, 우리가 아는 우주 외에도 수많은 우주가 존재하는데, 이를 <strong>다중 우주(멀티버스)</strong>라고 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="301fb952-797b-80e3-bd3b-ce69ddcb9396" class="numbered-list" start="3"><li><strong>웜홀</strong>을 연결하면 다른 우주로 놀러 갈 수도 있다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><hr id="301fb952-797b-805a-b8e0-f8af8bc5131c"/></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8027-ab37-fd3119d55f29" class=""><em>이 리포트는 AI가 수업 영상을 분석하여 자동 생성되었습니다.</em></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-8057-a29e-dd511b990295" class=""><em>동빈이의 성장을 응원합니다! 🚀✨</em></p></div><div style="display:contents" dir="auto"><p id="301fb952-797b-80e0-bc1d-e493904c34aa" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
